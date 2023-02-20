@@ -1,5 +1,13 @@
+import Banner from "../composents/Banner";
+import Gallery from "../composents/Gallery";
+
 function Home() {
-    return (<p>Accueil</p>)
+  return (
+    <div>
+      <Banner />
+      <Gallery />
+    </div>
+  );
 }
 
-export default Home
+export default Home;
