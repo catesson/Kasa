@@ -15,16 +15,23 @@ const StyleContent = styled.div`
     margin: 5px auto;
     height:auto;
 `
+const StyledBody = styled.div`
+min-width:375px;
+`
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+
 root.render(
   <React.StrictMode>
     <Router>
+      <StyledBody>
       <Header />
       <StyleContent>
       <MyRouter />
       </StyleContent>
       <Footer />
+      </StyledBody>
     </Router>
   </React.StrictMode>
 );
