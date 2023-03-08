@@ -16,7 +16,10 @@ const StyleContent = styled.div`
    min-height:75vh;
 `
 const StyledBody = styled.div`
-min-width:375px;
+min-width:335px;
+@media (max-width: 600px){
+  padding:0 20px;
+}
 
 `
 
@@ -31,8 +34,9 @@ root.render(
       <StyleContent>
       <MyRouter />
       </StyleContent>
-      <Footer />
+      
       </StyledBody>
+      <Footer />
     </Router>
   </React.StrictMode>
 );
