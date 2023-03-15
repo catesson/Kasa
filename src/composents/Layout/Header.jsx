@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import colors from "../../utils/colors";
 import logo from "../../assets/logo.png";
+import { useEffect, useState } from "react";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -11,7 +12,7 @@ const StyledHeader = styled.header`
   height: 68px;
   margin: 40px auto;
   @media (max-width: 600px) {
-    margin:20px auto;
+    margin: 20px auto;
     & img {
       width: 145px;
       height: 47px;
@@ -35,9 +36,9 @@ const HeaderLink = styled(Link)`
   font-weight: 500;
   font-size: 23px;
   line-height: 142.6%;
-  &:hover {
-    text-decoration: underline;
-  }
+  text-decoration: ${(props) => (props.underline ? "underline" : "none")};
+  
+
   @media (max-width: 600px) {
     font-size: 12px;
     padding-left: 10px;
@@ -45,12 +46,24 @@ const HeaderLink = styled(Link)`
 `;
 
 function Header() {
+  const [actifHome, setActifHome] = useState(false);
+  const [actifAbout, setActifAbout] = useState(false);
+
+  useEffect(() => {
+    setActifHome(window.location.pathname === "/");
+    setActifAbout(window.location.pathname === "/a-propos");
+  })
+
   return (
     <StyledHeader>
       <img src={logo} alt="logo de kasa" />
       <HeaderNav>
-        <HeaderLink to="/">Accueil</HeaderLink>
-        <HeaderLink to="/a-propos">À Propos</HeaderLink>
+        <HeaderLink onClick={() => setActifHome(true) & setActifAbout(false) } underline={actifHome} to="/">
+          Accueil
+        </HeaderLink>
+        <HeaderLink onClick={() => setActifAbout(true) & setActifHome(false)} underline={actifAbout} to="/a-propos">
+          À Propos
+        </HeaderLink>
       </HeaderNav>
     </StyledHeader>
   );

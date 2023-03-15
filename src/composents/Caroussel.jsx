@@ -38,6 +38,7 @@ const CarrouselOverlay = styled.div`
 
 `;
 const CarrouselNext = styled.div`
+cursor:pointer;
   margin: 0 10px;
   height: 80px;
   width: 47px;
@@ -50,6 +51,7 @@ const CarrouselNext = styled.div`
   }
 `;
 const CarrouselPrev = styled.div`
+cursor:pointer;
   margin: 0 10px;
   height: 80px;
   width: 47px;
