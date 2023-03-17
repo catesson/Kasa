@@ -36,7 +36,7 @@ const HeaderLink = styled(Link)`
   font-weight: 500;
   font-size: 23px;
   line-height: 142.6%;
-  text-decoration: ${(props) => (props.underline ? "underline" : "none")};
+  text-decoration: ${(props) => (props.underline === "true" ? "underline" : "none")};
   
 
   @media (max-width: 600px) {
@@ -52,16 +52,16 @@ function Header() {
   useEffect(() => {
     setActifHome(window.location.pathname === "/");
     setActifAbout(window.location.pathname === "/a-propos");
-  })
+  }, [])
 
   return (
     <StyledHeader>
       <img src={logo} alt="logo de kasa" />
       <HeaderNav>
-        <HeaderLink onClick={() => setActifHome(true) & setActifAbout(false) } underline={actifHome} to="/">
+        <HeaderLink onClick={() => setActifHome(true) & setActifAbout(false) } underline={actifHome.toString()} to="/">
           Accueil
         </HeaderLink>
-        <HeaderLink onClick={() => setActifAbout(true) & setActifHome(false)} underline={actifAbout} to="/a-propos">
+        <HeaderLink onClick={() => setActifAbout(true) & setActifHome(false)} underline={actifAbout.toString()} to="/a-propos">
           À Propos
         </HeaderLink>
       </HeaderNav>
